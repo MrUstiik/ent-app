@@ -2,10 +2,10 @@
   "generator-jhipster": {
     "applicationType": "microservice",
     "gitCompany": "",
-    "baseName": "jhipsterSampleApplication",
+    "baseName": "jhipster",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
-    "serverPort": 8081,
+    "serverPort": "8081",
     "serviceDiscoveryType": false,
     "authenticationType": "jwt",
     "uaaBaseName": "../uaa",
@@ -24,7 +24,7 @@
     "testFrameworks": [],
     "enableTranslation": true,
     "nativeLanguage": "en",
-    "languages": ["en"],
+    "languages": ["en", "fr"],
     "clientFramework": "angularX",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "6.10.5",
@@ -37,9 +37,11 @@
     "blueprints": [],
     "skipClient": true,
     "skipUserManagement": true,
-    "prettierJava": true
+    "prettierJava": true,
+    "reactive": true
   },
   "git-provider": "GitHub",
   "git-company": "MrUstiik",
-  "repository-name": "ent-app"
+  "repository-name": "ent-app",
+  "entities": []
 }

@@ -4,39 +4,35 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 /**
  * Persist AuditEvent managed by the Spring Boot actuator.
  *
  * @see org.springframework.boot.actuate.audit.AuditEvent
  */
-@Entity
-@Table(name = "jhi_persistent_audit_event")
+@Table("jhi_persistent_audit_event")
 public class PersistentAuditEvent implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    @Column(name = "event_id")
+    @Column("event_id")
     private Long id;
 
     @NotNull
-    @Column(nullable = false)
     private String principal;
 
-    @Column(name = "event_date")
+    @Column("event_date")
     private Instant auditEventDate;
 
-    @Column(name = "event_type")
+    @Column("event_type")
     private String auditEventType;
 
-    @ElementCollection
-    @MapKeyColumn(name = "name")
-    @Column(name = "value")
-    @CollectionTable(name = "jhi_persistent_audit_evt_data", joinColumns = @JoinColumn(name = "event_id"))
+    @Transient
     private Map<String, String> data = new HashMap<>();
 
     public Long getId() {
